@@ -15,20 +15,23 @@
     </div>
   </div>
 
-  <div class="main" ng-controller="MainController ">
+  <div class="main" ng-controller="MainController">
     <div class="container">
       <h1>{{ title }}</h1>
       <h2>{{ promo }}</h2>
 
       <div class="col-md-6">
-        <div class="thumbnail">
-          <img src="imgs/the-book-of-trees.jpg">
+        <div class="thumbnail" ng-repeat="product in products">
+          <img ng-src="{{ product.cover }}" width="250">
           <p class="title">{{ product.name | uppercase }}</p>
           <p class="price">{{ product.price | currency }}</p>
           <p class="date">{{ product.pubdate | date }}</p>
+          <div class="rating"> 
+            <p class="likes" ng-click="plusOne($index)">+ {{ product.likes }} </p> 
+            <p class="dislikes" ng-click="minusOne($index)">- {{ product.dislikes }} </p> 
+          </div>
         </div>
       </div>
-
 
     </div>
   </div>
